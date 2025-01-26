@@ -5,6 +5,7 @@ import ru.job4j.ood.isp.menu.Menu;
 public class Print {
     private Print() {
     }
+
     public static String menuToString(Menu menu) {
         StringBuilder result = new StringBuilder();
         if (!menu.iterator().hasNext()) {
@@ -21,6 +22,7 @@ public class Print {
         }
         return result.toString();
     }
+
     public static void print(String text) {
         System.out.println(text);
     }
