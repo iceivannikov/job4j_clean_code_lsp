@@ -15,10 +15,10 @@ public class TodoApp {
             4. Показать меню
             5. Выйти
             """;
-    private static final ActionDelegate defaultAction = () -> System.out.println("Some action");
+    private static final ActionDelegate DEFAULT_ACTION = () -> System.out.println("Some action");
 
     public static ActionDelegate getDefaultAction() {
-        return defaultAction;
+        return DEFAULT_ACTION;
     }
 
     public static void main(String[] args) {
