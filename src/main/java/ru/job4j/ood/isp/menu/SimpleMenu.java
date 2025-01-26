@@ -97,9 +97,9 @@ public class SimpleMenu implements Menu {
 
     private class DFSIterator implements Iterator<ItemInfo> {
 
-        Deque<MenuItem> stack = new LinkedList<>();
+        private final Deque<MenuItem> stack = new LinkedList<>();
 
-        Deque<String> numbers = new LinkedList<>();
+        private final Deque<String> numbers = new LinkedList<>();
 
         DFSIterator() {
             int number = 1;
@@ -123,7 +123,7 @@ public class SimpleMenu implements Menu {
             String lastNumber = numbers.removeFirst();
             List<MenuItem> children = current.getChildren();
             int currentNumber = children.size();
-            for (var i = children.listIterator(children.size()); i.hasPrevious(); ) {
+            for (var i = children.listIterator(children.size()); i.hasPrevious();) {
                 stack.addFirst(i.previous());
                 numbers.addFirst(lastNumber.concat(String.valueOf(currentNumber--)).concat("."));
             }
@@ -133,8 +133,8 @@ public class SimpleMenu implements Menu {
 
     private class ItemInfo {
 
-        MenuItem menuItem;
-        String number;
+        private final MenuItem menuItem;
+        private final String number;
 
         public ItemInfo(MenuItem menuItem, String number) {
             this.menuItem = menuItem;

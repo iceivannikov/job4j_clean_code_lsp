@@ -15,7 +15,11 @@ public class TodoApp {
             4. Показать меню
             5. Выйти
             """;
-    public static ActionDelegate DEFAULT_ACTION = () -> System.out.println("Some action");
+    private static final ActionDelegate defaultAction = () -> System.out.println("Some action");
+
+    public static ActionDelegate getDefaultAction() {
+        return defaultAction;
+    }
 
     public static void main(String[] args) {
         Menu menu = new SimpleMenu();
@@ -28,7 +32,7 @@ public class TodoApp {
                 case "1" -> {
                     Print.print("Введите название элемента");
                     String input = sc.nextLine();
-                    boolean add = menu.add(Menu.ROOT, input, DEFAULT_ACTION);
+                    boolean add = menu.add(Menu.ROOT, input, TodoApp.getDefaultAction());
                     if (!add) {
                         Print.print("Такой элемент уже есть в меню. Элемент не добавлен.");
                     }
@@ -42,7 +46,7 @@ public class TodoApp {
                     } else {
                         Print.print("Введите название дочернего элемента");
                         String childName = sc.nextLine();
-                        boolean add = menu.add(parentName, childName, DEFAULT_ACTION);
+                        boolean add = menu.add(parentName, childName, TodoApp.getDefaultAction());
                         if (!add) {
                             Print.print("Такой элемент уже есть в меню. Элемент не добавлен.");
                         }
@@ -64,6 +68,7 @@ public class TodoApp {
                     sc.close();
                     return;
                 }
+                default -> System.out.println("Некорректный ввод. Попробуйте снова.");
             }
         }
     }
